@@ -97,21 +97,26 @@ public class IntList {
         //TODO:  fill in method
         IntList C = new IntList();
         IntList res =C;
+        if(A==null & B ==null){
+            return null;
+        }
         while (A != null) {
+            C.rest = new IntList();
+            C =C.rest;
             C.first = A.first;
-            C.rest = new IntList();
-            C = C.rest;
-            A = A.rest;
-        }
-        while (B.rest != null) {
 
-            C.first = B.first;
-            C.rest = new IntList();
-            C = C.rest;
-            B = B.rest;
+            A =A.rest;
+
         }
-        C.first = B.first;
-        return res;
+
+        if (B != null) {
+            C.rest = new IntList();
+            C =C.rest;
+            C.first = B.first;
+            C.rest = B.rest;
+        }
+
+        return res.rest;
     }
 
 
